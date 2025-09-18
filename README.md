@@ -126,6 +126,9 @@ npm start
 - [ ] 사용자 프로필 시스템
 - [ ] 푸시 알림
 
+Notion 링크:
+https://www.notion.so/2711f95935d28081a9d9c54bc4a09029?source=copy_link
+
 ## 📄 라이센스
 
 이 프로젝트는 MIT 라이센스 하에 배포됩니다.
