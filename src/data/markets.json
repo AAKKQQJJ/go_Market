@@ -1,0 +1,50 @@
+[
+  {
+    "id": "jeonnam-mokpo-central",
+    "name": "목포중앙시장",
+    "regionId": "jeonnam",
+    "address": "전남 목포시 중앙로2가 1-1",
+    "lat": 34.7939,
+    "lng": 126.3928
+  },
+  {
+    "id": "jeonnam-yeosu-central",
+    "name": "여수중앙시장",
+    "regionId": "jeonnam",
+    "address": "전남 여수시 중앙동 449-1",
+    "lat": 34.7604,
+    "lng": 127.6622
+  },
+  {
+    "id": "gwangju-yangdong",
+    "name": "양동시장",
+    "regionId": "gwangju",
+    "address": "광주 동구 제봉로 193",
+    "lat": 35.1468,
+    "lng": 126.9185
+  },
+  {
+    "id": "gwangju-daein",
+    "name": "대인시장",
+    "regionId": "gwangju",
+    "address": "광주 동구 제봉로 298",
+    "lat": 35.1396,
+    "lng": 126.9043
+  },
+  {
+    "id": "jeonbuk-jeonju-nambu",
+    "name": "전주남부시장",
+    "regionId": "jeonbuk",
+    "address": "전북 전주시 완산구 풍남문3길 2",
+    "lat": 35.8141,
+    "lng": 127.1489
+  },
+  {
+    "id": "jeonbuk-gunsan-central",
+    "name": "군산중앙시장",
+    "regionId": "jeonbuk",
+    "address": "전북 군산시 중앙로1가 1-17",
+    "lat": 35.9675,
+    "lng": 126.7369
+  }
+]

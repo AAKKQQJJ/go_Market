@@ -1,0 +1,177 @@
+# 시장에 가면 - 프로젝트 의존성 및 요구사항
+
+## 📦 NPM 패키지 의존성
+
+### 🔥 핵심 프레임워크
+next@14.0.4
+react@18.2.0
+react-dom@18.2.0
+typescript@5.3.3
+
+### 🎨 스타일링
+tailwindcss@3.3.6
+autoprefixer@10.4.16
+postcss@8.4.32
+
+### 🔧 개발 도구
+eslint@8.55.0
+eslint-config-next@14.0.4
+@types/node@20.10.4
+@types/react@18.2.43
+@types/react-dom@18.2.17
+
+### 🔥 Firebase SDK
+firebase@10.7.1
+
+### 🗺 지도 및 위치 서비스
+# Naver Maps JS SDK (CDN을 통해 로드)
+# https://oapi.map.naver.com/openapi/v3/maps.js
+
+### 🎯 폼 관리 및 유효성 검사
+react-hook-form@7.48.2
+@hookform/resolvers@3.3.2
+yup@1.3.3
+
+### 🔍 검색 기능
+fuse.js@7.0.0
+
+### 🎨 아이콘
+lucide-react@0.294.0
+
+## 💻 시스템 요구사항
+
+### Node.js 환경
+- Node.js: 18.0.0 이상 권장
+- npm: 9.0.0 이상 또는 yarn: 1.22.0 이상
+
+### 브라우저 호환성
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+### 개발 환경
+- VS Code (권장)
+- Git 2.0+
+- 터미널/명령줄 도구
+
+## 🔐 환경변수 요구사항
+
+### Firebase 설정
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+
+### Naver Maps API
+NEXT_PUBLIC_NAVER_MAP_CLIENT_ID=your_naver_client_id
+
+## 🌐 외부 서비스 요구사항
+
+### Firebase 서비스
+- Firebase Project (Spark Plan 이상)
+- Firestore Database
+- Firebase Authentication
+- Firebase Storage (이미지 업로드용)
+
+### Naver Cloud Platform
+- NCP 계정
+- Maps API 서비스 등록
+- Web Dynamic Map API 활성화
+
+## 📊 성능 요구사항
+
+### 메모리 사용량
+- 개발 환경: 최소 4GB RAM
+- 프로덕션: 최소 1GB RAM
+
+### 저장 공간
+- 프로젝트 소스: ~100MB
+- node_modules: ~300MB
+- 빌드 파일: ~50MB
+
+### 네트워크
+- 개발: 안정적인 인터넷 연결
+- API 호출: Firebase, Naver Maps API
+
+## 🔧 설치 명령어
+
+### 프로젝트 의존성 설치
+```bash
+npm install
+```
+
+### 개발 서버 실행
+```bash
+npm run dev
+```
+
+### 프로덕션 빌드
+```bash
+npm run build
+npm start
+```
+
+## 📱 런타임 의존성 상세
+
+### React 생태계
+- react@18.2.0 (UI 라이브러리)
+- react-dom@18.2.0 (DOM 렌더링)
+- next@14.0.4 (풀스택 프레임워크)
+
+### TypeScript 스택
+- typescript@5.3.3 (타입 시스템)
+- @types/node@20.10.4 (Node.js 타입)
+- @types/react@18.2.43 (React 타입)
+- @types/react-dom@18.2.17 (React DOM 타입)
+
+### CSS 프레임워크
+- tailwindcss@3.3.6 (유틸리티 CSS)
+- autoprefixer@10.4.16 (CSS 벤더 프리픽스)
+- postcss@8.4.32 (CSS 후처리기)
+
+### Firebase SDK
+- firebase@10.7.1 (백엔드 서비스)
+  - Firestore (NoSQL 데이터베이스)
+  - Authentication (사용자 인증)
+  - Storage (파일 저장소)
+
+### 유틸리티 라이브러리
+- fuse.js@7.0.0 (퍼지 검색)
+- lucide-react@0.294.0 (SVG 아이콘)
+- react-hook-form@7.48.2 (폼 관리)
+- @hookform/resolvers@3.3.2 (폼 리졸버)
+- yup@1.3.3 (스키마 유효성 검사)
+
+### 개발 도구
+- eslint@8.55.0 (코드 린터)
+- eslint-config-next@14.0.4 (Next.js ESLint 설정)
+
+## 🚀 배포 환경 요구사항
+
+### Vercel (권장)
+- Node.js 18+ 런타임
+- 자동 빌드 및 배포
+- 환경변수 설정 지원
+
+### 기타 플랫폼
+- Netlify, AWS Amplify, Railway 등
+- Node.js 지원 필수
+- 정적 파일 서빙 지원
+
+## 📝 버전 호환성 매트릭스
+
+| 패키지 | 최소 버전 | 권장 버전 | 최대 테스트 버전 |
+|--------|-----------|-----------|-----------------|
+| Node.js | 16.0.0 | 18.0.0 | 20.0.0 |
+| npm | 8.0.0 | 9.0.0 | 10.0.0 |
+| React | 18.0.0 | 18.2.0 | 18.2.0 |
+| Next.js | 13.0.0 | 14.0.4 | 14.0.4 |
+| TypeScript | 4.8.0 | 5.3.3 | 5.3.3 |
+
+---
+
+**마지막 업데이트**: 2025-09-18
+**호환성 테스트**: Node.js 18.18.0, npm 9.8.1

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "jeonnam",
+    "name": "전라남도"
+  },
+  {
+    "id": "gwangju", 
+    "name": "광주광역시"
+  },
+  {
+    "id": "jeonbuk",
+    "name": "전라북도"
+  }
+]

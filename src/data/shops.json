@@ -1,0 +1,106 @@
+[
+  {
+    "id": "shop-mokpo-001",
+    "marketId": "jeonnam-mokpo-central",
+    "name": "목포 홍어마을",
+    "lat": 34.7941,
+    "lng": 126.3930,
+    "category": "수산물",
+    "hours": "07:00-19:00",
+    "phone": "061-244-1234",
+    "address": "전남 목포시 중앙로2가 3-5",
+    "description": "신선한 홍어와 각종 수산물을 판매하는 전통 가게입니다.",
+    "products": [
+      {
+        "id": "prod-001",
+        "name": "홍어",
+        "isSignature": true,
+        "isSeasonal": false
+      },
+      {
+        "id": "prod-002", 
+        "name": "민어",
+        "isSignature": false,
+        "isSeasonal": true
+      }
+    ]
+  },
+  {
+    "id": "shop-mokpo-002",
+    "marketId": "jeonnam-mokpo-central",
+    "name": "할머니 떡집",
+    "lat": 34.7943,
+    "lng": 126.3925,
+    "category": "떡류",
+    "hours": "06:00-18:00",
+    "phone": "061-244-5678",
+    "address": "전남 목포시 중앙로2가 7-2",
+    "description": "3대째 이어온 전통 떡집으로 수제 떡을 만듭니다.",
+    "products": [
+      {
+        "id": "prod-003",
+        "name": "인절미",
+        "isSignature": true,
+        "isSeasonal": false
+      },
+      {
+        "id": "prod-004",
+        "name": "송편",
+        "isSignature": false,
+        "isSeasonal": true
+      }
+    ]
+  },
+  {
+    "id": "shop-gwangju-001",
+    "marketId": "gwangju-yangdong",
+    "name": "양동 청과",
+    "lat": 35.1470,
+    "lng": 126.9187,
+    "category": "청과물",
+    "hours": "05:00-20:00",
+    "phone": "062-222-1234",
+    "address": "광주 동구 제봉로 195-3",
+    "description": "매일 새벽에 받아오는 신선한 과일과 채소를 판매합니다.",
+    "products": [
+      {
+        "id": "prod-005",
+        "name": "딸기",
+        "isSignature": true,
+        "isSeasonal": true
+      },
+      {
+        "id": "prod-006",
+        "name": "배추",
+        "isSignature": false,
+        "isSeasonal": false
+      }
+    ]
+  },
+  {
+    "id": "shop-jeonju-001",
+    "marketId": "jeonbuk-jeonju-nambu",
+    "name": "전주 한복집",
+    "lat": 35.8143,
+    "lng": 127.1491,
+    "category": "의류",
+    "hours": "09:00-19:00",
+    "phone": "063-123-4567",
+    "address": "전북 전주시 완산구 풍남문3길 4-1",
+    "description": "전통 한복부터 개량 한복까지 다양한 한복을 제작합니다.",
+    "products": [
+      {
+        "id": "prod-007",
+        "name": "전통한복",
+        "isSignature": true,
+        "isSeasonal": false
+      },
+      {
+        "id": "prod-008",
+        "name": "개량한복",
+        "isSignature": false,
+        "isSeasonal": false
+      }
+    ]
+  }
+]
