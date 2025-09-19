@@ -37,9 +37,9 @@
 ## 🔥 Firebase 설정 체크리스트
 
 ### 📋 Firebase 프로젝트 설정
-- [ ] Firebase Console에서 새 프로젝트 생성
-- [ ] 웹 앱 추가 및 설정 정보 복사
-- [ ] Firebase SDK 설정 완료
+- [x] Firebase Console에서 새 프로젝트 생성
+- [x] 웹 앱 추가 및 설정 정보 복사
+- [x] Firebase SDK 설정 완료
 
 ### 📋 Firebase 서비스 활성화
 - [ ] Firestore 데이터베이스 생성
@@ -63,15 +63,15 @@
 ## 🗺 Naver Maps API 설정 체크리스트
 
 ### 📋 Naver Cloud Platform 설정
-- [ ] NCP 계정 생성 및 로그인
-- [ ] Maps API 서비스 신청
-- [ ] Web Dynamic Map API 활성화
-- [ ] Client ID 발급
+- [x] NCP 계정 생성 및 로그인
+- [x] Maps API 서비스 신청
+- [x] Web Dynamic Map API 활성화
+- [x] Client ID 발급
 
 ### 📋 API 키 설정
-- [ ] 도메인 등록 (localhost:3000, 프로덕션 도메인)
-- [ ] 일일 사용량 한도 확인
-- [ ] 환경변수에 API 키 설정
+- [x] 도메인 등록 (localhost:3000, 프로덕션 도메인)
+- [x] 일일 사용량 한도 확인
+- [x] 환경변수에 API 키 설정
 
 ---
 

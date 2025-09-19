@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import filteredMarketsData from '../data/filtered_markets.json';
 
 // 네이버 지도 컴포넌트
 function NaverMapComponent({ shops, scriptLoaded }: { shops: any[]; scriptLoaded: boolean }) {
@@ -51,7 +52,11 @@ function NaverMapComponent({ shops, scriptLoaded }: { shops: any[]; scriptLoaded
         });
       } catch (error) {
         console.error('지도 초기화 실패:', error);
-        console.error('에러 상세:', error.message);
+        if (error instanceof Error) {
+          console.error('에러 상세:', error.message);
+        } else {
+          console.error('에러 상세:', String(error));
+        }
         setMapError(true);
       }
     };
@@ -90,20 +95,18 @@ function NaverMapComponent({ shops, scriptLoaded }: { shops: any[]; scriptLoaded
   );
 }
 
-// 임시 데이터
-const regions = [
-  { id: 'jeonnam', name: '전라남도' },
-  { id: 'gwangju', name: '광주광역시' },
-  { id: 'jeonbuk', name: '전라북도' }
-];
+// Process the imported data
+const regions = Array.from(new Set(filteredMarketsData.map(market => market.시도명)))
+  .map((regionName, index) => ({
+    id: `region-${index}`,
+    name: regionName
+  }));
 
-const markets = [
-  { id: 'mokpo-central', name: '목포중앙시장', regionId: 'jeonnam' },
-  { id: 'yeosu-central', name: '여수중앙시장', regionId: 'jeonnam' },
-  { id: 'yangdong', name: '양동시장', regionId: 'gwangju' },
-  { id: 'daein', name: '대인시장', regionId: 'gwangju' },
-  { id: 'jeonju-nambu', name: '전주남부시장', regionId: 'jeonbuk' },
-];
+const markets = filteredMarketsData.map((market, index) => ({
+  id: `market-${index}`,
+  name: market.시장명,
+  regionName: market.시도명
+}));
 
 const sampleShops = [
   { id: '1', name: '목포 홍어마을', category: '수산물', market: '목포중앙시장', status: '영업중' },
@@ -157,7 +160,10 @@ export default function HomePage() {
 
   // 필터링된 시장 목록
   const filteredMarkets = selectedRegion 
-    ? markets.filter(market => market.regionId === selectedRegion)
+    ? markets.filter(market => {
+        const region = regions.find(r => r.id === selectedRegion);
+        return region && market.regionName === region.name;
+      })
     : markets;
 
   // 필터링된 점포 목록
@@ -171,16 +177,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-        {/* 헤더 */}
-        <header className="bg-white border-b border-gray-300 py-4">
-          <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-900">시장에 가면</h1>
-            <button className="border-2 border-gray-900 px-4 py-2 text-gray-900 font-medium">
-              점포등록하기
-            </button>
-          </div>
-        </header>
-
       <div className="max-w-6xl mx-auto px-4 py-6">
         {/* 스탬프 이벤트 배너 */}
         <div className="bg-gradient-to-r from-orange-100 to-yellow-100 border-2 border-gray-300 rounded-lg p-6 mb-6 relative">
@@ -234,7 +230,7 @@ export default function HomePage() {
                 value={selectedMarket}
                 onChange={(e) => setSelectedMarket(e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded"
-                disabled={!selectedRegion}
+                disabled={!selectedRegion && regions.length > 0}
               >
                 <option value="">전체 시장</option>
                 {filteredMarkets.map((market) => (
@@ -265,14 +261,13 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-6">
           {/* 왼쪽: 가게 리스트 */}
           <div className="space-y-4">
-            {/* 첫 번째 가게 리스트 */}
             <div className="border-2 border-gray-300 rounded">
               <div className="bg-gray-100 p-3 flex items-center border-b">
                 <MapPin className="w-5 h-5 mr-2" />
                 <span className="font-medium">가게 리스트</span>
               </div>
               <div className="p-4">
-                {filteredShops.slice(0, Math.ceil(filteredShops.length / 2)).map((shop) => (
+                {filteredShops.map((shop, index) => (
                   <div key={shop.id} className="mb-3 last:mb-0">
                     <div className="flex justify-between items-start">
                       <div>
@@ -287,37 +282,7 @@ export default function HomePage() {
                         {shop.status}
                       </span>
                     </div>
-                    {filteredShops.indexOf(shop) < Math.ceil(filteredShops.length / 2) - 1 && (
-                      <hr className="mt-3 border-gray-200" />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 두 번째 가게 리스트 */}
-            <div className="border-2 border-gray-300 rounded">
-              <div className="bg-gray-100 p-3 flex items-center border-b">
-                <MapPin className="w-5 h-5 mr-2" />
-                <span className="font-medium">가게 리스트</span>
-              </div>
-              <div className="p-4">
-                {filteredShops.slice(Math.ceil(filteredShops.length / 2)).map((shop) => (
-                  <div key={shop.id} className="mb-3 last:mb-0">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium">{shop.name}</h3>
-                        <p className="text-sm text-gray-600">{shop.category} | {shop.market}</p>
-                      </div>
-                      <span className={`px-2 py-1 rounded text-xs ${
-                        shop.status === '영업중' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-red-100 text-red-800'
-                      }`}>
-                        {shop.status}
-                      </span>
-                    </div>
-                    {filteredShops.indexOf(shop) < filteredShops.length - 1 && (
+                    {index < filteredShops.length - 1 && (
                       <hr className="mt-3 border-gray-200" />
                     )}
                   </div>
