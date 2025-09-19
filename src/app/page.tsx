@@ -243,7 +243,7 @@ export default function HomePage() {
           {/* 가게 검색 */}
           <div className="border-2 border-gray-300 rounded">
             <div className="bg-gray-100 p-3 text-center font-medium border-b">
-              가게 이름, 키색
+              가게 이름, 카테고리
             </div>
             <div className="p-3">
               <input

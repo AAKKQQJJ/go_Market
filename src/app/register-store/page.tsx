@@ -1,8 +1,52 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import ProductModal from '@/components/ProductModal';
+
+interface Product {
+  id: number;
+  name: string;
+  image: File | null;
+  isRepresentative: boolean;
+  isSeasonal: boolean;
+}
 
 export default function RegisterStorePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [storeDescription, setStoreDescription] = useState('');
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSaveProducts = (newProducts: Product[]) => {
+    setProducts(newProducts);
+    console.log('저장된 상품:', newProducts);
+  };
+
+  const handleGenerateDescription = () => {
+    if (products.length === 0) {
+      alert('상품을 먼저 등록해주세요.');
+      return;
+    }
+
+    const representativeProducts = products.filter(p => p.isRepresentative);
+
+    if (representativeProducts.length === 0) {
+      alert('대표 상품을 선택해주세요.');
+      return;
+    }
+
+    const productNames = representativeProducts.map(p => p.name).join(', ');
+    const description = `${productNames}를 잘하는 집`;
+    setStoreDescription(description);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-4xl">
@@ -34,13 +78,31 @@ export default function RegisterStorePage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">판매 상품</label>
-                <button className="mt-1 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">판매 상품 등록</button>
+                <button 
+                  type="button"
+                  onClick={handleOpenModal}
+                  className="mt-1 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                >
+                  판매 상품 등록
+                </button>
+                <div className="mt-4 space-y-2">
+                  {products.map(p => (
+                    <div key={p.id} className="p-2 border rounded-md bg-gray-50 text-sm">
+                      {p.name} {p.isRepresentative && '(대표)'} {p.isSeasonal && '(계절)'}
+                    </div>
+                  ))}
+                </div>
               </div>
               <div>
                 <label htmlFor="storeDescription" className="block text-sm font-medium text-gray-700">점포 소개</label>
-                <textarea id="storeDescription" name="storeDescription" rows={4} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <textarea id="storeDescription" name="storeDescription" rows={4} value={storeDescription} onChange={(e) => setStoreDescription(e.target.value)} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
               </div>
-              <button className="mt-4 w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300">AI 자동완성</button>
+              <button 
+                onClick={handleGenerateDescription} 
+                className="mt-4 w-full bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300"
+              >
+                AI 자동완성
+              </button>
             </div>
           </div>
         </div>
@@ -48,6 +110,12 @@ export default function RegisterStorePage() {
           <button className="bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600">등록 완료</button>
         </div>
       </div>
+
+      <ProductModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSave={handleSaveProducts}
+      />
     </div>
   );
 }

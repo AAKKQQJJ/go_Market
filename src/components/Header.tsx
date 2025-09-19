@@ -31,7 +31,7 @@ export default function Header() {
             <Link href="/" className="text-gray-700 hover:text-orange-500">
               홈
             </Link>
-            <Link href="/merchant/submit" className="text-gray-700 hover:text-orange-500">
+            <Link href="/register-store" className="text-gray-700 hover:text-orange-500">
               점포 등록
             </Link>
           </div>
